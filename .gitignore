@@ -1,0 +1,16 @@
+bili/.gitignore
+*.py
+!bili/v.py
+*.po
+*.pot
+bili/Language/.tx/
+bili/LICENSE
+bili/*.md
+*.exe
+*.7z
+bilibin/linux/
+bilibin/mac/
+bilibin/*.h
+bili/*.txt
+bilibin/*.txt
+bilibin/LICENSE

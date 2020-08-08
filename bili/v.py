@@ -98,6 +98,11 @@ def main():
         return -1
     if ww('../bilibin/v.h',l)!=0:
         return -1
+    if exists('../bilibin/version.txt'):
+        remove('../bilibin/version.txt')
+    f = open('../bilibin/version.txt','w',encoding='utf8')
+    f.write(x)
+    f.close()
     return 0
 if __name__ == "__main__":
     main()

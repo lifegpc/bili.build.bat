@@ -28,14 +28,14 @@ if exist bili_%a%_windows.7z del /S /Q bili_%a%_windows.7z
 if exist bili_%a%_linux.7z del /S /Q bili_%a%_linux.7z
 if exist bili_%a%_mac.7z del /S /Q bili_%a%_mac.7z
 title building bili_%a%_windows10_x64.7z
-7z a -stm1 -y -mx9 -x@7z bili_%a%_windows10_x64.7z *.exe LICENSE README.txt Language/*
+7z a -stm1 -y -mx9 -x@7z bili_%a%_windows10_x64.7z *.exe LICENSE README.txt Language/* version.txt
 cd ../bili/
 title building bili_%a%.7z
-7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%.7z *.py file/*.py LICENSE README.txt Language/*.po Language/*.pot
+7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%.7z *.py file/*.py LICENSE README.txt Language/*.po Language/*.pot ../bilibin/version.txt
 title building bili_%a%_windows.7z
-7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_windows.7z *.py file/*.py LICENSE README.txt ../bilibin/chromedriver.exe Language/*.po Language/*.pot
+7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_windows.7z *.py file/*.py LICENSE README.txt ../bilibin/chromedriver.exe Language/*.po Language/*.pot ../bilibin/version.txt
 title building bili_%a%_linux.7z
-7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_linux.7z *.py file/*.py LICENSE README.txt ../bilibin/linux/chromedriver Language/*.po Language/*.pot
+7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_linux.7z *.py file/*.py LICENSE README.txt ../bilibin/linux/chromedriver Language/*.po Language/*.pot ../bilibin/version.txt
 title building bili_%a%_mac.7z
-7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_mac.7z *.py file/*.py LICENSE README.txt ../bilibin/mac/chromedriver Language/*.po Language/*.pot
+7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_mac.7z *.py file/*.py LICENSE README.txt ../bilibin/mac/chromedriver Language/*.po Language/*.pot ../bilibin/version.txt
 title build complete

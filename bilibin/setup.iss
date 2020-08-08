@@ -61,6 +61,7 @@ Source: "chromedriver.exe"; DestDir: "{app}";
 Source: "ffmpeg.exe"; DestDir: "{app}";
 Source: "LICENSE"; DestDir: "{app}";
 Source: "README.txt"; DestDir: "{app}"; Flags: isreadme
+Source: "version.txt"; DestDir: "{app}";
 Source: "Language/*"; DestDir: "{app}/Language";
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 

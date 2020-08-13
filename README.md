@@ -21,6 +21,7 @@ The build bat for [bili](https://github.com/lifegpc/bili).
 3.下载UNIX工具中的cp.exe。  
 4.下载[7-zip](https://7-zip.org/)。确保**7z.exe**在PATH指定的目录下。  
 5.下载安装[Inno setup5](https://files.jrsoftware.org/is/5/innosetup-5.5.9-unicode.exe)。确保**compil32.exe**在PATH指定的目录下。
+6.下载安装[node.js](https://nodejs.org/)，然后使用npm安装[showdown](https://github.com/showdownjs/showdown)，然后运行bili/converttohtml.js完成MARKDOWN转HTML的转换。
 
 # 运行脚本
 双击运行**bili/build.bat**即可。

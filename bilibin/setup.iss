@@ -60,7 +60,8 @@ Source: "aria2c.exe"; DestDir: "{app}";
 Source: "chromedriver.exe"; DestDir: "{app}";
 Source: "ffmpeg.exe"; DestDir: "{app}";
 Source: "LICENSE"; DestDir: "{app}";
-Source: "README.txt"; DestDir: "{app}"; Flags: isreadme
+Source: "README.html"; DestDir: "{app}"; Flags: isreadme
+Source: "easyuse.html"; DestDir: "{app}";
 Source: "version.txt"; DestDir: "{app}";
 Source: "Language/*"; DestDir: "{app}/Language";
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files

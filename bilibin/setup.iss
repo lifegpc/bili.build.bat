@@ -56,6 +56,7 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 Source: "start.exe"; DestDir: "{app}";
 Source: "setsettings.exe"; DestDir: "{app}";
 Source: "filter.exe"; DestDir: "{app}";
+Source: "startwebui.exe"; DestDir: "{app}";
 Source: "aria2c.exe"; DestDir: "{app}";
 Source: "chromedriver.exe"; DestDir: "{app}";
 Source: "ffmpeg.exe"; DestDir: "{app}";
@@ -64,6 +65,11 @@ Source: "README.html"; DestDir: "{app}"; Flags: isreadme
 Source: "easyuse.html"; DestDir: "{app}";
 Source: "version.txt"; DestDir: "{app}";
 Source: "Language/*"; DestDir: "{app}/Language";
+Source: "webuihtml/*"; DestDir: "{app}/webuihtml";
+Source: "webuihtml/css/*"; DestDir: "{app}/webuihtml/css";
+Source: "webuihtml/js/*"; DestDir: "{app}/webuihtml/js";
+Source: "webuihtml/jso/*"; DestDir: "{app}/webuihtml/jso";
+Source: "webuihtml/json/*"; DestDir: "{app}/webuihtml/json";
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -72,6 +78,7 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: quicklaunchicon
 Name: "{commonprograms}\{#MyAppName}\setsettings"; Filename: "{app}\setsettings.exe"
 Name: "{commonprograms}\{#MyAppName}\filter"; Filename: "{app}\filter.exe"
+Name: "{commonprograms}\{#MyAppName}\startwebui"; Filename: "{app}\startwebui.exe"
 
 [Run]
 Filename: "{app}\setsettings.exe"; Description: "{cm:LaunchProgram,setsettings.exe}"; Flags: nowait postinstall skipifsilent 64bit

@@ -9,15 +9,25 @@ title compiling filter.exe
 pyinstaller -F filter.py --version-file v2.txt
 title compiling setsettings.exe
 pyinstaller -F setsettings.py --version-file v3.txt
+title compiling startwebui.exe
+pyinstaller -F startwebui.py --version-file v4.txt
 title copy dist exe to bilibin
-cp dist/*.exe ../bilibin/
+cp -v dist/*.exe ../bilibin/
 cd ../bilibin/
-if not exist Language md Language
+if exist Language rm -rfv Language
+md Language
+if exist webuihtml rm -rfv webuihtml
+md webuihtml
 cd ../bili/
-cp Language/*.po ../bilibin/Language
-cp Language/*.pot ../bilibin/Language
-cp LICENSE ../bilibin/LICENSE
-cp *.html ../bilibin
+cp -v Language/*.po ../bilibin/Language
+cp -v Language/*.pot ../bilibin/Language
+cp -v webuihtml/*.html ../bilibin/webuihtml
+cp -rv webuihtml/css ../bilibin/webuihtml/css
+cp -rv webuihtml/js ../bilibin/webuihtml/js
+cp -rv webuihtml/jso ../bilibin/webuihtml/jso
+cp -rv webuihtml/json ../bilibin/webuihtml/json
+cp -v LICENSE ../bilibin/LICENSE
+cp -v *.html ../bilibin
 cd ../bilibin/
 title compiling installer
 compil32 /cc setup.iss
@@ -28,14 +38,14 @@ if exist bili_%a%_windows.7z del /S /Q bili_%a%_windows.7z
 if exist bili_%a%_linux.7z del /S /Q bili_%a%_linux.7z
 if exist bili_%a%_mac.7z del /S /Q bili_%a%_mac.7z
 title building bili_%a%_windows10_x64.7z
-7z a -stm1 -y -mx9 -x@7z bili_%a%_windows10_x64.7z *.exe LICENSE *.html Language/* version.txt
+7z a -stm1 -y -mx9 -x@7z bili_%a%_windows10_x64.7z *.exe LICENSE *.html Language/* version.txt webuihtml/*
 cd ../bili/
 title building bili_%a%.7z
-7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%.7z *.py file/*.py LICENSE *.html Language/*.po Language/*.pot ../bilibin/version.txt
+7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%.7z *.py file/*.py LICENSE *.html Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/*
 title building bili_%a%_windows.7z
-7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_windows.7z *.py file/*.py LICENSE *.html ../bilibin/chromedriver.exe Language/*.po Language/*.pot ../bilibin/version.txt
+7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_windows.7z *.py file/*.py LICENSE *.html ../bilibin/chromedriver.exe Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/*
 title building bili_%a%_linux.7z
-7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_linux.7z *.py file/*.py LICENSE *.html ../bilibin/linux/chromedriver Language/*.po Language/*.pot ../bilibin/version.txt
+7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_linux.7z *.py file/*.py LICENSE *.html ../bilibin/linux/chromedriver Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/*
 title building bili_%a%_mac.7z
-7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_mac.7z *.py file/*.py LICENSE *.html ../bilibin/mac/chromedriver Language/*.po Language/*.pot ../bilibin/version.txt
+7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_mac.7z *.py file/*.py LICENSE *.html ../bilibin/mac/chromedriver Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/*
 title build complete

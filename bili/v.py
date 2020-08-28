@@ -96,6 +96,8 @@ def main():
         return -1
     if crf('v3.txt','设置程序','setsettings',l)!=0:
         return -1
+    if crf('v4.txt','web用户界面启动程序','startwebui',l)!=0:
+        return -1
     if ww('../bilibin/v.h',l)!=0:
         return -1
     if exists('../bilibin/version.txt'):

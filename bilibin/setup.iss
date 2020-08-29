@@ -32,6 +32,7 @@ SolidCompression=yes
 VersionInfoVersion={#MyAppVersion}
 UninstallDisplayName={#MyAppName}
 AppCopyright=Copyright 2019-2020 lifegpc
+SetupIconFile=../bili/icon/favicon.ico
 
 [code]
 function GetDefaultInstallRoot(Param: String): String;
@@ -70,6 +71,7 @@ Source: "webuihtml/css/*"; DestDir: "{app}/webuihtml/css";
 Source: "webuihtml/js/*"; DestDir: "{app}/webuihtml/js";
 Source: "webuihtml/jso/*"; DestDir: "{app}/webuihtml/jso";
 Source: "webuihtml/json/*"; DestDir: "{app}/webuihtml/json";
+Source: "icon/*"; DestDir: "{app}/icon";
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

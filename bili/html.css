@@ -55,14 +55,18 @@ pre {
     margin-bottom: 16px;
 }
 
-pre code {
+code {
     font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+    padding: .2em .4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(27,31,35,.05);
+    border-radius: 6px;
 }
 
-pre code.bash.language-bash {
+code.bash.language-bash {
     padding: 16px;
     overflow: auto;
-    font-size: 85%;
     line-height: 1.45;
     background-color: #f6f8fa;
     border-radius: 6px;

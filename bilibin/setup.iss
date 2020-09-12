@@ -33,6 +33,7 @@ VersionInfoVersion={#MyAppVersion}
 UninstallDisplayName={#MyAppName}
 AppCopyright=Copyright 2019-2020 lifegpc
 SetupIconFile=../bili/icon/favicon.ico
+UninstallDisplayIcon=../bili/icon/favicon.ico
 
 [code]
 function GetDefaultInstallRoot(Param: String): String;
@@ -68,6 +69,7 @@ Source: "version.txt"; DestDir: "{app}";
 Source: "Language/*"; DestDir: "{app}/Language";
 Source: "webuihtml/*"; DestDir: "{app}/webuihtml";
 Source: "webuihtml/css/*"; DestDir: "{app}/webuihtml/css";
+Source: "webuihtml/csso/*"; DestDir: "{app}/webuihtml/csso";
 Source: "webuihtml/js/*"; DestDir: "{app}/webuihtml/js";
 Source: "webuihtml/jso/*"; DestDir: "{app}/webuihtml/jso";
 Source: "webuihtml/json/*"; DestDir: "{app}/webuihtml/json";

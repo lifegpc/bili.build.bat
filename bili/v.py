@@ -1,7 +1,8 @@
 from os import popen,remove
 from re import search,I
 from os.path import exists
-def crf(fn:str,fd:str,od:str,l:list) :
+from lang import getdict
+def crf(fn:str,od:str,l:list) :
     if exists(fn) :
         try :
             remove(fn)
@@ -15,10 +16,13 @@ def crf(fn:str,fd:str,od:str,l:list) :
         z='%s.%s.%s'%(l[1],l[2],l[3])
         if l[6]!='' :
             z='%s(dirty)'%(z)
-    s='''VSVersionInfo(
+    laen = getdict('exeinfo', 'en')
+    lazh_CN = getdict('exeinfo', 'zh_CN')
+    laja = getdict('exeinfo', 'ja')
+    s=f"""VSVersionInfo(
   ffi=FixedFileInfo(
-    filevers=(%s),
-    prodvers=(%s),
+    filevers=({v}),
+    prodvers=({v}),
     mask=0x3f,
     flags=0x0,
     OS=0x40004,
@@ -30,20 +34,40 @@ def crf(fn:str,fd:str,od:str,l:list) :
     StringFileInfo(
       [
       StringTable(
-        u'040904B0',
+        u'080403A8',
         [StringStruct(u'CompanyName', u'lifegpc'),
-        StringStruct(u'FileDescription', u'%s'),
-        StringStruct(u'FileVersion', u'%s'),
-        StringStruct(u'InternalName', u'%s'),
+        StringStruct(u'FileDescription', u'{lazh_CN[od]}'),
+        StringStruct(u'FileVersion', u'{z}'),
+        StringStruct(u'InternalName', u'{od}'),
         StringStruct(u'LegalCopyright', u'Copyright 2019-2020 lifegpc'),
-        StringStruct(u'OriginalFilename', u'%s.py'),
+        StringStruct(u'OriginalFilename', u'{od}.py'),
         StringStruct(u'ProductName', u'bili'),
-        StringStruct(u'ProductVersion', u'%s')])
+        StringStruct(u'ProductVersion', u'{z}')]),
+      StringTable(
+          u'040904E4',
+        [StringStruct(u'CompanyName', u'lifegpc'),
+        StringStruct(u'FileDescription', u'{laen[od]}'),
+        StringStruct(u'FileVersion', u'{z}'),
+        StringStruct(u'InternalName', u'{od}'),
+        StringStruct(u'LegalCopyright', u'Copyright 2019-2020 lifegpc'),
+        StringStruct(u'OriginalFilename', u'{od}.py'),
+        StringStruct(u'ProductName', u'bili'),
+        StringStruct(u'ProductVersion', u'{z}')]),
+      StringTable(
+          u'041103A4',
+        [StringStruct(u'CompanyName', u'lifegpc'),
+        StringStruct(u'FileDescription', u'{laja[od]}'),
+        StringStruct(u'FileVersion', u'{z}'),
+        StringStruct(u'InternalName', u'{od}'),
+        StringStruct(u'LegalCopyright', u'Copyright 2019-2020 lifegpc'),
+        StringStruct(u'OriginalFilename', u'{od}.py'),
+        StringStruct(u'ProductName', u'bili'),
+        StringStruct(u'ProductVersion', u'{z}')])
       ]), 
-    VarFileInfo([VarStruct(u'Translation', [1033, 1200])])
+    VarFileInfo([VarStruct(u'Translation', [0x804, 0x3a8]), VarStruct(u'Translation', [0x409, 0x4e4]), VarStruct(u'Translation', [0x411, 0x3a4])])
   ]
 )
-'''%(v,v,fd,z,od,od,z)
+"""
     f.write(s)
     f.close()
     return 0
@@ -90,13 +114,13 @@ def main():
         l.append(s[-1][1:]+",")
     else :
         l.append('')
-    if crf('v.txt','从BiliBili下载视频/弹幕','start',l)!=0:
+    if crf('v.txt', 'start', l) != 0:
         return -1
-    if crf('v2.txt','过滤弹幕','filter',l)!=0:
+    if crf('v2.txt', 'filter', l) != 0:
         return -1
-    if crf('v3.txt','设置程序','setsettings',l)!=0:
+    if crf('v3.txt', 'setsettings', l) != 0:
         return -1
-    if crf('v4.txt','web用户界面启动程序','startwebui',l)!=0:
+    if crf('v4.txt', 'startwebui', l) != 0:
         return -1
     if ww('../bilibin/v.h',l)!=0:
         return -1

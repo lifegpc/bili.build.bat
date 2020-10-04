@@ -42,7 +42,11 @@ def crf(fn:str,od:str,l:list) :
         StringStruct(u'LegalCopyright', u'Copyright 2019-2020 lifegpc'),
         StringStruct(u'OriginalFilename', u'{od}.py'),
         StringStruct(u'ProductName', u'bili'),
-        StringStruct(u'ProductVersion', u'{z}')]),
+        StringStruct(u'ProductVersion', u'{z}')])
+      ]), 
+    VarFileInfo([VarStruct(u'Translation', [0x804, 0x3a8])]),
+    StringFileInfo(
+      [
       StringTable(
           u'040904E4',
         [StringStruct(u'CompanyName', u'lifegpc'),
@@ -52,7 +56,11 @@ def crf(fn:str,od:str,l:list) :
         StringStruct(u'LegalCopyright', u'Copyright 2019-2020 lifegpc'),
         StringStruct(u'OriginalFilename', u'{od}.py'),
         StringStruct(u'ProductName', u'bili'),
-        StringStruct(u'ProductVersion', u'{z}')]),
+        StringStruct(u'ProductVersion', u'{z}')])
+      ]),
+    VarFileInfo([VarStruct(u'Translation', [0x409, 0x4e4])]),
+    StringFileInfo(
+      [
       StringTable(
           u'041103A4',
         [StringStruct(u'CompanyName', u'lifegpc'),
@@ -63,8 +71,8 @@ def crf(fn:str,od:str,l:list) :
         StringStruct(u'OriginalFilename', u'{od}.py'),
         StringStruct(u'ProductName', u'bili'),
         StringStruct(u'ProductVersion', u'{z}')])
-      ]), 
-    VarFileInfo([VarStruct(u'Translation', [0x804, 0x3a8]), VarStruct(u'Translation', [0x409, 0x4e4]), VarStruct(u'Translation', [0x411, 0x3a4])])
+      ]),
+    VarFileInfo([VarStruct(u'Translation', [0x411, 0x3a4])])
   ]
 )
 """

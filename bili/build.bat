@@ -4,7 +4,7 @@ for /f "delims=" %%i in ('py v.py') do set a=%%i
 if %ERRORLEVEL% NEQ 0 pause
 if exist dist del /S /Q dist
 title compiling start.exe
-pyinstaller -F start.py --version-file v.txt --icon icon/favicon.ico
+call buildstart.bat
 title compiling filter.exe
 pyinstaller -F filter.py --version-file v2.txt --icon icon/favicon.ico
 title compiling setsettings.exe

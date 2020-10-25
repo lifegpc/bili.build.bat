@@ -2,6 +2,7 @@ from os import popen,remove
 from re import search,I
 from os.path import exists
 from lang import getdict
+from pkg_resources import resource_filename
 def crf(fn:str,od:str,l:list) :
     if exists(fn) :
         try :
@@ -79,6 +80,16 @@ def crf(fn:str,od:str,l:list) :
     f.write(s)
     f.close()
     return 0
+def iso639file():
+    z = ''
+    for n in ['iso-639-3-macrolanguages.tab', 'iso-639-3.tab', 'iso-639-3_Name_Index.tab', 'iso-639-3-macrolanguages.tab', 'iso639-5.tsv', 'iso639-2.tsv', 'iso639-1.tsv']:
+        z = z + f' --add-data "{resource_filename("iso639", n)};iso639"'
+    return z
+def buildstart():
+    with open('buildstart.bat', 'w', encoding='utf8') as f:
+        f.write('@echo off\n')
+        z = 'pyinstaller -F start.py --version-file v.txt --icon icon/favicon.ico' + iso639file()
+        f.write(z)
 def ww(fn:str,l:list) :
     if l[4]>0 :
         v='%s.%s.%s.%s'%(l[1],l[2],l[3],l[4])
@@ -139,4 +150,6 @@ def main():
     f.close()
     return 0
 if __name__ == "__main__":
+    buildstart()
+    exit()
     main()

@@ -111,6 +111,7 @@ def ww(fn:str,l:list) :
     f.close()
     return 0
 def main():
+    buildstart()
     r=popen('git describe --tags --long --dirty')
     x=r.read()
     r.close()
@@ -150,6 +151,4 @@ def main():
     f.close()
     return 0
 if __name__ == "__main__":
-    buildstart()
-    exit()
     main()

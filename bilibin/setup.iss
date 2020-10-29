@@ -50,6 +50,12 @@ Name: zh_CN; MessagesFile: Languages\ChineseSimplified.isl
 Name: zh_TW; MessagesFile: Languages\ChineseTraditional.isl
 Name: ja;    MessagesFile: compiler:Languages\Japanese.isl
 
+[CustomMessages]
+ViewChangelog=View changelog
+zh_CN.ViewChangelog=查看更新日志
+zh_TW.ViewChangelog=檢視更新紀錄檔
+ja.ViewChangelog=変更ログの表示
+
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
@@ -66,6 +72,7 @@ Source: "LICENSE"; DestDir: "{app}";
 Source: "README.html"; DestDir: "{app}"; Flags: isreadme
 Source: "easyuse.html"; DestDir: "{app}";
 Source: "version.txt"; DestDir: "{app}";
+Source: "changelog.txt"; DestDir: "{app}";
 Source: "Language/*"; DestDir: "{app}/Language";
 Source: "webuihtml/*"; DestDir: "{app}/webuihtml";
 Source: "webuihtml/css/*"; DestDir: "{app}/webuihtml/css";
@@ -85,5 +92,6 @@ Name: "{commonprograms}\{#MyAppName}\filter"; Filename: "{app}\filter.exe"
 Name: "{commonprograms}\{#MyAppName}\startwebui"; Filename: "{app}\startwebui.exe"
 
 [Run]
-Filename: "{app}\setsettings.exe"; Description: "{cm:LaunchProgram,setsettings.exe}"; Flags: nowait postinstall skipifsilent 64bit
+Filename: "{app}\setsettings.exe"; Description: "{cm:LaunchProgram,setsettings.exe}"; Flags: nowait postinstall skipifsilent 64bit unchecked
+Filename: "{app}\changelog.txt"; Description: "{cm:ViewChangelog}"; Flags: nowait postinstall skipifsilent shellexec
 

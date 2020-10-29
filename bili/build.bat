@@ -31,6 +31,7 @@ cp -rv webuihtml/jso ../bilibin/webuihtml/jso
 cp -rv webuihtml/json ../bilibin/webuihtml/json
 cp -v LICENSE ../bilibin/LICENSE
 cp -v *.html ../bilibin
+cp -v changelog.txt ../bilibin/changelog.txt
 cp -v icon/*.svg ../bilibin/icon
 cd ../bilibin/
 title compiling installer
@@ -42,14 +43,14 @@ if exist bili_%a%_windows.7z del /S /Q bili_%a%_windows.7z
 if exist bili_%a%_linux.7z del /S /Q bili_%a%_linux.7z
 if exist bili_%a%_mac.7z del /S /Q bili_%a%_mac.7z
 title building bili_%a%_windows10_x64.7z
-7z a -stm1 -y -mx9 -x@7z bili_%a%_windows10_x64.7z *.exe LICENSE *.html Language/* version.txt webuihtml/* icon/*
+7z a -stm1 -y -mx9 -x@7z bili_%a%_windows10_x64.7z *.exe LICENSE *.html Language/* version.txt webuihtml/* icon/* changelog.txt
 cd ../bili/
 title building bili_%a%.7z
-7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%.7z *.py file/*.py LICENSE *.html Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/* icon/*.svg webui/api/*.py webui/page/*.py webuihtml/csso/* webui/extractor/*.py
+7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%.7z *.py file/*.py LICENSE *.html Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/* icon/*.svg webui/api/*.py webui/page/*.py webuihtml/csso/* webui/extractor/*.py changelog.txt
 title building bili_%a%_windows.7z
-7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_windows.7z *.py file/*.py LICENSE *.html ../bilibin/chromedriver.exe Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/* icon/*.svg webui/api/*.py webui/page/*.py webuihtml/csso/* webui/extractor/*.py
+7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_windows.7z *.py file/*.py LICENSE *.html ../bilibin/chromedriver.exe Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/* icon/*.svg webui/api/*.py webui/page/*.py webuihtml/csso/* webui/extractor/*.py changelog.txt
 title building bili_%a%_linux.7z
-7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_linux.7z *.py file/*.py LICENSE *.html ../bilibin/linux/chromedriver Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/* icon/*.svg webui/api/*.py webui/page/*.py webuihtml/csso/* webui/extractor/*.py
+7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_linux.7z *.py file/*.py LICENSE *.html ../bilibin/linux/chromedriver Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/* icon/*.svg webui/api/*.py webui/page/*.py webuihtml/csso/* webui/extractor/*.py changelog.txt
 title building bili_%a%_mac.7z
-7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_mac.7z *.py file/*.py LICENSE *.html ../bilibin/mac/chromedriver Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/* icon/*.svg webui/api/*.py webui/page/*.py webuihtml/csso/* webui/extractor/*.py
+7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_mac.7z *.py file/*.py LICENSE *.html ../bilibin/mac/chromedriver Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/* icon/*.svg webui/api/*.py webui/page/*.py webuihtml/csso/* webui/extractor/*.py changelog.txt
 title build complete

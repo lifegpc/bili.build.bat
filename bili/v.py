@@ -7,27 +7,33 @@ import requests
 
 
 def write_changelog():
-    re = requests.get('https://api.github.com/repos/lifegpc/bili/releases')
-    if not re.ok:
-        return 0
-    re = re.json()
     with open('changelog.txt', 'w', encoding='utf8') as f:
-        for i in re:
-            title = f"{i['tag_name']}"
-            if i['prerelease']:
-                title = f"{title} beta"
-            if i['tag_name'] != i['name']:
-                title = f"{title} {i['name']}"
-            title = f"{title} {i['created_at'][:10]} {i['created_at'][11:19]}"
-            f.write(f"{title}\n\n")
-            body: str = i['body']
-            body = body.replace('\r\n', '\n')
-            body = body.replace('```', '')
-            bodyl = body.splitlines(False)
-            for bd in bodyl:
-                if bd != "":
-                    f.write(f"{bd}\n")
-            f.write('\n')
+        page = 1
+        bs = True
+        while bs:
+            re = requests.get(f'https://api.github.com/repos/lifegpc/bili/releases?page={page}')
+            if not re.ok:
+                return 0
+            re = re.json()
+            if len(re) == 0:
+                bs = False
+            for i in re:
+                title = f"{i['tag_name']}"
+                if i['prerelease']:
+                    title = f"{title} beta"
+                if i['tag_name'] != i['name']:
+                    title = f"{title} {i['name']}"
+                title = f"{title} {i['created_at'][:10]} {i['created_at'][11:19]}"
+                f.write(f"{title}\n\n")
+                body: str = i['body']
+                body = body.replace('\r\n', '\n')
+                body = body.replace('```', '')
+                bodyl = body.splitlines(False)
+                for bd in bodyl:
+                    if bd != "":
+                        f.write(f"{bd}\n")
+                f.write('\n')
+            page = page + 1
 
 
 def crf(fn:str,od:str,l:list) :

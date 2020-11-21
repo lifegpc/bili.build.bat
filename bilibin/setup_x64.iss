@@ -2,16 +2,16 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #include "v.h"
-#define MyAppName "bili"
+#define MyAppName "bili x64"
 #define MyAppPublisher "lifegpc"
 #define MyAppURL "https:\\github.com\lifegpc\bili"
-#define MyAppExeName "start.exe"
+#define MyAppExeName "start.bat"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{9007D20E-3623-49D5-B70D-3538417517DC}
+AppId={{B886A88E-C946-411B-A171-6EC7A1752626}
 AppName={#MyAppName}
 AppVersion={#MyAppVername}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -26,7 +26,7 @@ DefaultGroupName={#MyAppName} x64
 DisableProgramGroupPage=yes
 LicenseFile=LICENSE
 OutputDir=.
-OutputBaseFilename=bili_{#MyAppVername}_windows10_x64
+OutputBaseFilename=bili_{#MyAppVername}_windows_x64
 Compression=lzma
 SolidCompression=yes
 VersionInfoVersion={#MyAppVersion}
@@ -61,10 +61,16 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "start.exe"; DestDir: "{app}";
-Source: "setsettings.exe"; DestDir: "{app}";
-Source: "filter.exe"; DestDir: "{app}";
-Source: "startwebui.exe"; DestDir: "{app}";
+Source: "x64\*.bat"; DestDir: "{app}";
+Source: "..\bili\embeddedpython_x64.bat"; DestDir: "{app}";
+Source: "..\bili\python_x64\*"; DestDir: "{app}\python_x64"; Excludes: "*__pycache__\*"; Flags: recursesubdirs;
+Source: "..\bili\*.py"; DestDir: "{app}"; Excludes: "prepare.py,v.py";
+Source: "..\bili\file\*.py"; DestDir: "{app}\file";
+Source: "..\bili\webui\*.py"; DestDir: "{app}\webui";
+Source: "..\bili\webui\api\*.py"; DestDir: "{app}\webui\api";
+Source: "..\bili\webui\extractor\*.py"; DestDir: "{app}\webui\extractor";
+Source: "..\bili\webui\page\*.py"; DestDir: "{app}\webui\page";
+Source: "..\bili\requirements.txt"; DestDir: "{app}";
 Source: "aria2c.exe"; DestDir: "{app}";
 Source: "chromedriver.exe"; DestDir: "{app}";
 Source: "ffmpeg.exe"; DestDir: "{app}";
@@ -81,17 +87,18 @@ Source: "webuihtml\js\*"; DestDir: "{app}\webuihtml\js";
 Source: "webuihtml\jso\*"; DestDir: "{app}\webuihtml\jso";
 Source: "webuihtml\json\*"; DestDir: "{app}\webuihtml\json";
 Source: "icon\*"; DestDir: "{app}\icon";
+Source: "..\bili\icon\*.ico"; DestDir: "{app}\icon";
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{commonprograms}\{#MyAppName}\bili"; Filename: "{app}\{#MyAppExeName}"
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
-Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: quicklaunchicon
-Name: "{commonprograms}\{#MyAppName}\setsettings"; Filename: "{app}\setsettings.exe"
-Name: "{commonprograms}\{#MyAppName}\filter"; Filename: "{app}\filter.exe"
-Name: "{commonprograms}\{#MyAppName}\startwebui"; Filename: "{app}\startwebui.exe"
+Name: "{commonprograms}\{#MyAppName}\bili x64"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\icon\favicon.ico";
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: "{app}\icon\favicon.ico";
+Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: quicklaunchicon; IconFilename: "{app}\icon\favicon.ico";
+Name: "{commonprograms}\{#MyAppName}\setsettings x64"; Filename: "{app}\setsettings.bat"; IconFilename: "{app}\icon\favicon.ico";
+Name: "{commonprograms}\{#MyAppName}\filter x64"; Filename: "{app}\filter.bat"; IconFilename: "{app}\icon\favicon.ico";
+Name: "{commonprograms}\{#MyAppName}\startwebui x64"; Filename: "{app}\startwebui.bat"; IconFilename: "{app}\icon\favicon.ico";
 
 [Run]
-Filename: "{app}\setsettings.exe"; Description: "{cm:LaunchProgram,setsettings.exe}"; Flags: nowait postinstall skipifsilent 64bit unchecked
+Filename: "{app}\setsettings.bat"; Description: "{cm:LaunchProgram,setsettings.bat}"; Flags: nowait postinstall skipifsilent unchecked
 Filename: "{app}\changelog.txt"; Description: "{cm:ViewChangelog}"; Flags: nowait postinstall skipifsilent shellexec
 

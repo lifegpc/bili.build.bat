@@ -14,3 +14,4 @@ bilibin/*.h
 bili/*.txt
 bilibin/*.txt
 bilibin/LICENSE
+!bili/python_*/*.py

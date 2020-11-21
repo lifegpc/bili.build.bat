@@ -34,12 +34,18 @@ cp -v *.html ../bilibin
 cp -v changelog.txt ../bilibin/changelog.txt
 cp -v icon/*.svg ../bilibin/icon
 cd ../bilibin/
-title compiling installer
+title compiling windows10 x64 installer
 compil32 /cc setup.iss
+title compiling windows x86 installer
+compil32 /cc setup_x86.iss
+title compiling windows x64 installer
+compil32 /cc setup_x64.iss
 title clean 7z file
 if exist bili_%a%_windows10_x64.7z del /S /Q bili_%a%_windows10_x64.7z
 if exist bili_%a%.7z del /S /Q bili_%a%.7z
 if exist bili_%a%_windows.7z del /S /Q bili_%a%_windows.7z
+if exist bili_%a%_windows_x86.7z del /S /Q bili_%a%_windows_x86.7z
+if exist bili_%a%_windows_x64.7z del /S /Q bili_%a%_windows_x64.7z
 if exist bili_%a%_linux.7z del /S /Q bili_%a%_linux.7z
 if exist bili_%a%_mac.7z del /S /Q bili_%a%_mac.7z
 title building bili_%a%_windows10_x64.7z
@@ -49,6 +55,10 @@ title building bili_%a%.7z
 7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%.7z *.py file/*.py LICENSE *.html Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/* icon/*.svg webui/api/*.py webui/page/*.py webuihtml/csso/* webui/extractor/*.py changelog.txt requirements.txt
 title building bili_%a%_windows.7z
 7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_windows.7z *.py file/*.py LICENSE *.html ../bilibin/chromedriver.exe Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/* icon/*.svg webui/api/*.py webui/page/*.py webuihtml/csso/* webui/extractor/*.py changelog.txt requirements.txt
+title building bili_%a%_windows_x86.7z
+7z a -stm1 -y -mx9 -x@7z.txt  ../bilibin/bili_%a%_windows_x86.7z *.py file/*.py LICENSE *.html ../bilibin/chromedriver.exe Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/* icon/*.svg webui/api/*.py webui/page/*.py webuihtml/csso/* webui/extractor/*.py changelog.txt requirements.txt embeddedpython_x86.bat python_x86/ ../bilibin/x86/*.bat ../bilibin/x86/ffmpeg.exe ../bilibin/x86/aria2c.exe
+title building bili_%a%_windows_x64.7z
+7z a -stm1 -y -mx9 -x@7z.txt  ../bilibin/bili_%a%_windows_x64.7z *.py file/*.py LICENSE *.html ../bilibin/chromedriver.exe Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/* icon/*.svg webui/api/*.py webui/page/*.py webuihtml/csso/* webui/extractor/*.py changelog.txt requirements.txt embeddedpython_x64.bat python_x64/ ../bilibin/x64/*.bat ../bilibin/ffmpeg.exe ../bilibin/aria2c.exe
 title building bili_%a%_linux.7z
 7z a -stm1 -y -mx9 -x@7z.txt ../bilibin/bili_%a%_linux.7z *.py file/*.py LICENSE *.html ../bilibin/linux/chromedriver Language/*.po Language/*.pot ../bilibin/version.txt webui/*.py webuihtml/*.html webuihtml/css/* webuihtml/js/* webuihtml/jso/* webuihtml/json/* icon/*.svg webui/api/*.py webui/page/*.py webuihtml/csso/* webui/extractor/*.py changelog.txt requirements.txt
 title building bili_%a%_mac.7z

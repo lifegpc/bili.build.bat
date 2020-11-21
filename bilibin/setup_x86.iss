@@ -2,16 +2,16 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #include "v.h"
-#define MyAppName "bili"
+#define MyAppName "bili x86"
 #define MyAppPublisher "lifegpc"
 #define MyAppURL "https:\\github.com\lifegpc\bili"
-#define MyAppExeName "start.exe"
+#define MyAppExeName "start.bat"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{9007D20E-3623-49D5-B70D-3538417517DC}
+AppId={{5F2B56DE-6400-4AF2-944A-C740BC1A526B}
 AppName={#MyAppName}
 AppVersion={#MyAppVername}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -19,14 +19,13 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-ArchitecturesAllowed=x64
-ArchitecturesInstallIn64BitMode=x64
+ArchitecturesAllowed=x86 x64
 DefaultDirName={code:GetDefaultInstallRoot}\{#MyAppName}
-DefaultGroupName={#MyAppName} x64
+DefaultGroupName={#MyAppName} x86
 DisableProgramGroupPage=yes
 LicenseFile=LICENSE
 OutputDir=.
-OutputBaseFilename=bili_{#MyAppVername}_windows10_x64
+OutputBaseFilename=bili_{#MyAppVername}_windows_x86
 Compression=lzma
 SolidCompression=yes
 VersionInfoVersion={#MyAppVersion}
@@ -61,13 +60,19 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "start.exe"; DestDir: "{app}";
-Source: "setsettings.exe"; DestDir: "{app}";
-Source: "filter.exe"; DestDir: "{app}";
-Source: "startwebui.exe"; DestDir: "{app}";
-Source: "aria2c.exe"; DestDir: "{app}";
+Source: "x86\*.bat"; DestDir: "{app}";
+Source: "..\bili\embeddedpython_x86.bat"; DestDir: "{app}";
+Source: "..\bili\python_x86\*"; DestDir: "{app}\python_x86"; Excludes: "*__pycache__\*"; Flags: recursesubdirs;
+Source: "..\bili\*.py"; DestDir: "{app}"; Excludes: "prepare.py,v.py";
+Source: "..\bili\file\*.py"; DestDir: "{app}\file";
+Source: "..\bili\webui\*.py"; DestDir: "{app}\webui";
+Source: "..\bili\webui\api\*.py"; DestDir: "{app}\webui\api";
+Source: "..\bili\webui\extractor\*.py"; DestDir: "{app}\webui\extractor";
+Source: "..\bili\webui\page\*.py"; DestDir: "{app}\webui\page";
+Source: "..\bili\requirements.txt"; DestDir: "{app}";
+Source: "x86\aria2c.exe"; DestDir: "{app}";
 Source: "chromedriver.exe"; DestDir: "{app}";
-Source: "ffmpeg.exe"; DestDir: "{app}";
+Source: "x86\ffmpeg.exe"; DestDir: "{app}";
 Source: "LICENSE"; DestDir: "{app}";
 Source: "README.html"; DestDir: "{app}"; Flags: isreadme
 Source: "easyuse.html"; DestDir: "{app}";
@@ -81,17 +86,18 @@ Source: "webuihtml\js\*"; DestDir: "{app}\webuihtml\js";
 Source: "webuihtml\jso\*"; DestDir: "{app}\webuihtml\jso";
 Source: "webuihtml\json\*"; DestDir: "{app}\webuihtml\json";
 Source: "icon\*"; DestDir: "{app}\icon";
+Source: "..\bili\icon\*.ico"; DestDir: "{app}\icon";
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{commonprograms}\{#MyAppName}\bili"; Filename: "{app}\{#MyAppExeName}"
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
-Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: quicklaunchicon
-Name: "{commonprograms}\{#MyAppName}\setsettings"; Filename: "{app}\setsettings.exe"
-Name: "{commonprograms}\{#MyAppName}\filter"; Filename: "{app}\filter.exe"
-Name: "{commonprograms}\{#MyAppName}\startwebui"; Filename: "{app}\startwebui.exe"
+Name: "{commonprograms}\{#MyAppName}\bili x86"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\icon\favicon.ico";
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: "{app}\icon\favicon.ico";
+Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: quicklaunchicon; IconFilename: "{app}\icon\favicon.ico";
+Name: "{commonprograms}\{#MyAppName}\setsettings x86"; Filename: "{app}\setsettings.bat"; IconFilename: "{app}\icon\favicon.ico";
+Name: "{commonprograms}\{#MyAppName}\filter x86"; Filename: "{app}\filter.bat"; IconFilename: "{app}\icon\favicon.ico";
+Name: "{commonprograms}\{#MyAppName}\startwebui x86"; Filename: "{app}\startwebui.bat"; IconFilename: "{app}\icon\favicon.ico";
 
 [Run]
-Filename: "{app}\setsettings.exe"; Description: "{cm:LaunchProgram,setsettings.exe}"; Flags: nowait postinstall skipifsilent 64bit unchecked
+Filename: "{app}\setsettings.bat"; Description: "{cm:LaunchProgram,setsettings.bat}"; Flags: nowait postinstall skipifsilent unchecked
 Filename: "{app}\changelog.txt"; Description: "{cm:ViewChangelog}"; Flags: nowait postinstall skipifsilent shellexec
 

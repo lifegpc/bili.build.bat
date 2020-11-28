@@ -90,6 +90,7 @@ Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Fil
 Name: "{commonprograms}\{#MyAppName}\setsettings"; Filename: "{app}\setsettings.exe"
 Name: "{commonprograms}\{#MyAppName}\filter"; Filename: "{app}\filter.exe"
 Name: "{commonprograms}\{#MyAppName}\startwebui"; Filename: "{app}\startwebui.exe"
+Name: "{commonprograms}\{#MyAppName}\bili README"; Filename: "{app}\README.html"
 
 [Run]
 Filename: "{app}\setsettings.exe"; Description: "{cm:LaunchProgram,setsettings.exe}"; Flags: nowait postinstall skipifsilent 64bit unchecked

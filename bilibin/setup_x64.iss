@@ -97,6 +97,7 @@ Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Fil
 Name: "{commonprograms}\{#MyAppName}\setsettings x64"; Filename: "{app}\setsettings.bat"; IconFilename: "{app}\icon\favicon.ico";
 Name: "{commonprograms}\{#MyAppName}\filter x64"; Filename: "{app}\filter.bat"; IconFilename: "{app}\icon\favicon.ico";
 Name: "{commonprograms}\{#MyAppName}\startwebui x64"; Filename: "{app}\startwebui.bat"; IconFilename: "{app}\icon\favicon.ico";
+Name: "{commonprograms}\{#MyAppName}\bili README x64"; Filename: "{app}\README.html"
 
 [Run]
 Filename: "{app}\setsettings.bat"; Description: "{cm:LaunchProgram,setsettings.bat}"; Flags: nowait postinstall skipifsilent unchecked

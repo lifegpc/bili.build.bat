@@ -3,6 +3,7 @@ var fs = require('fs')
 var converter = new showdown.Converter()
 converter.setOption('ghCompatibleHeaderId', true)
 converter.setOption('tasklists', true)
+converter.setOption('strikethrough', true)
 String.prototype.replaceall = function (s1, s2) {
     var v = this
     var v2 = v.replace(s1, s2)

@@ -75,7 +75,6 @@ Source: "chromedriver.exe"; DestDir: "{app}";
 Source: "x86\ffmpeg.exe"; DestDir: "{app}";
 Source: "LICENSE"; DestDir: "{app}";
 Source: "README.html"; DestDir: "{app}"; Flags: isreadme
-Source: "easyuse.html"; DestDir: "{app}";
 Source: "version.txt"; DestDir: "{app}";
 Source: "changelog.txt"; DestDir: "{app}";
 Source: "Language\*"; DestDir: "{app}\Language";

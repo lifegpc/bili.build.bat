@@ -23,6 +23,8 @@ fs.readFile('README.md', function (err, data) {
         return console.error(err)
     }
     var s = data.toString()
+    var l = s.split('\n');
+    s = l.slice(1).join('\n');
     var html = converter.makeHtml(s)
     fs.writeFile('README.html', html.tofullHTML(css), () => { })
 })

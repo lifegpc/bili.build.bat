@@ -23,7 +23,6 @@ fs.readFile('README.md', function (err, data) {
         return console.error(err)
     }
     var s = data.toString()
-    s = s.replaceall('(#登录时发生错误使用chromedriver时)', '(#登录时发生错误（使用chromedriver时）)')
     var html = converter.makeHtml(s)
     fs.writeFile('README.html', html.tofullHTML(css), () => { })
 })

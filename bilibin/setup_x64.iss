@@ -50,11 +50,7 @@ Name: zh_CN; MessagesFile: Languages\ChineseSimplified.isl
 Name: zh_TW; MessagesFile: Languages\ChineseTraditional.isl
 Name: ja;    MessagesFile: compiler:Languages\Japanese.isl
 
-[CustomMessages]
-ViewChangelog=View changelog
-zh_CN.ViewChangelog=查看更新日志
-zh_TW.ViewChangelog=檢視更新紀錄檔
-ja.ViewChangelog=変更ログの表示
+#include "custommessage.iss"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
@@ -96,9 +92,11 @@ Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Fil
 Name: "{commonprograms}\{#MyAppName}\setsettings x64"; Filename: "{app}\setsettings.bat"; IconFilename: "{app}\icon\favicon.ico";
 Name: "{commonprograms}\{#MyAppName}\filter x64"; Filename: "{app}\filter.bat"; IconFilename: "{app}\icon\favicon.ico";
 Name: "{commonprograms}\{#MyAppName}\startwebui x64"; Filename: "{app}\startwebui.bat"; IconFilename: "{app}\icon\favicon.ico";
+Name: "{commonprograms}\{#MyAppName}\bilischeme x64"; Filename: "{app}\bilischeme.bat"; IconFilename: "{app}\icon\favicon.ico";
 Name: "{commonprograms}\{#MyAppName}\bili README x64"; Filename: "{app}\README.html"
 
 [Run]
 Filename: "{app}\setsettings.bat"; Description: "{cm:LaunchProgram,setsettings.bat}"; Flags: nowait postinstall skipifsilent unchecked
 Filename: "{app}\changelog.txt"; Description: "{cm:ViewChangelog}"; Flags: nowait postinstall skipifsilent shellexec
+Filename: "{app}\embeddedpython_x64.bat"; Parameters: """{app}\bilischeme.py"""; Description: "{cm:bilischeme}"; Flags: nowait postinstall skipifsilent runascurrentuser
 

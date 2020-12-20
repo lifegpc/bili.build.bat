@@ -11,6 +11,8 @@ title compiling setsettings.exe
 pyinstaller -F setsettings.py --version-file v3.txt --icon icon/favicon.ico
 title compiling startwebui.exe
 pyinstaller -F startwebui.py --version-file v4.txt --icon icon/favicon.ico
+title compiling bilischeme.exe
+pyinstaller -F bilischeme.py --version-file v5.txt --icon icon/favicon.ico
 title copy dist exe to bilibin
 cp -v dist/*.exe ../bilibin/
 cd ../bilibin/

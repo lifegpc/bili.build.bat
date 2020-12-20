@@ -50,11 +50,7 @@ Name: zh_CN; MessagesFile: Languages\ChineseSimplified.isl
 Name: zh_TW; MessagesFile: Languages\ChineseTraditional.isl
 Name: ja;    MessagesFile: compiler:Languages\Japanese.isl
 
-[CustomMessages]
-ViewChangelog=View changelog
-zh_CN.ViewChangelog=查看更新日志
-zh_TW.ViewChangelog=檢視更新紀錄檔
-ja.ViewChangelog=変更ログの表示
+#include "custommessage.iss"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
@@ -65,6 +61,7 @@ Source: "start.exe"; DestDir: "{app}";
 Source: "setsettings.exe"; DestDir: "{app}";
 Source: "filter.exe"; DestDir: "{app}";
 Source: "startwebui.exe"; DestDir: "{app}";
+Source: "bilischeme.exe"; DestDir: "{app}";
 Source: "aria2c.exe"; DestDir: "{app}";
 Source: "chromedriver.exe"; DestDir: "{app}";
 Source: "ffmpeg.exe"; DestDir: "{app}";
@@ -89,9 +86,11 @@ Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Fil
 Name: "{commonprograms}\{#MyAppName}\setsettings"; Filename: "{app}\setsettings.exe"
 Name: "{commonprograms}\{#MyAppName}\filter"; Filename: "{app}\filter.exe"
 Name: "{commonprograms}\{#MyAppName}\startwebui"; Filename: "{app}\startwebui.exe"
+Name: "{commonprograms}\{#MyAppName}\bilischeme"; Filename: "{app}\bilischeme.exe"
 Name: "{commonprograms}\{#MyAppName}\bili README"; Filename: "{app}\README.html"
 
 [Run]
 Filename: "{app}\setsettings.exe"; Description: "{cm:LaunchProgram,setsettings.exe}"; Flags: nowait postinstall skipifsilent 64bit unchecked
 Filename: "{app}\changelog.txt"; Description: "{cm:ViewChangelog}"; Flags: nowait postinstall skipifsilent shellexec
+Filename: "{app}\bilischeme.exe"; Description: "{cm:bilischeme}"; Flags: nowait postinstall skipifsilent 64bit runascurrentuser
 
